@@ -8,7 +8,7 @@ from myfitnesspal.client import Client
 
 if __name__ == '__main__':
     client = Client(username=os.environ['MFP_USER'], password=os.environ['MFP_PASS'])
-    fileDirectory = os.environ['FILEDIR']
+    fileDirectory = os.environ['DATADIR']
     start = date(2018, 5, 21)
     end = date(2020,2,1)
     delta = end - start
