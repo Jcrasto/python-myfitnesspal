@@ -15,9 +15,9 @@ applehealth = pandas.read_csv(read_dir + "/qsaccess/applehealth.csv")
 applehealth['Start'] = pandas.to_datetime(applehealth['Start'])
 
 weights1 = weights1.merge(applehealth, left_on='Date',right_on='Start')
-
+weights1.to_csv(os.environ['DATADIR'] + '/manual/manual1_health_merge.csv', index=False)
 weights2 = weights2.merge(applehealth, left_on='Date',right_on='Start')
-
+weights2.to_csv(os.environ['DATADIR'] + '/manual/manual2_health_merge.csv',index=False)
 renpho = pandas.read_csv(read_dir + "/renpho/RENPHO-Josh.csv")
 
 calendarDict = dict((v,k) for k,v in enumerate(calendar.month_abbr))
@@ -33,5 +33,6 @@ renpho["Date"] = Dates
 renpho["Time"] = Times
 
 renpho = renpho.merge(applehealth, left_on='Date',right_on='Start')
+renpho.to_csv(os.environ['DATADIR'] + "/renpho/renpho_health_merge.csv", index = False)
+#print(renpho.describe())
 
-print(renpho.head())
